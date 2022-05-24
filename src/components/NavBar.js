@@ -4,6 +4,7 @@ import "../styles/NavBar.css";
 import { useState } from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {BrowserRouter} from "react-router-dom";
+// import { networks } from '../utils/networks';
 import {HashLink as Link} from "react-router-hash-link";
 import Scroll from 'react-scroll';
 const ScrollLink = Scroll.ScrollLink;
@@ -11,6 +12,7 @@ const ScrollLink = Scroll.ScrollLink;
 function NavBar() {
   const {ethereum} = window;
     const [currentAccount, setCurrentAccount] = useState('');
+    const [network, setNetwork] = useState('')
     const connectBtn = document.querySelector(".wallet");
     
     const connectWallet = async() => {  //connect wallet => like login to get read-only access to user's wallet
@@ -21,12 +23,19 @@ function NavBar() {
           }
 
         const accounts = await ethereum.request({method:"eth_requestAccounts"});
-
+        
         if(accounts.length !== 0) {
+            const chainId = await ethereum.request({ method: 'eth_chainId' });
+            //setNetwork(networks[chainId]);
+            ethereum.on('chainChanged', handleChainChanged);
+    
+            function handleChainChanged(_chainId) {
+              window.location.reload();
+            }
             setCurrentAccount(accounts[0]);
             console.log("Account connected", accounts[0]);
             connectBtn.textContent = `${accounts[0].slice(0,6)+"...."+accounts[0].slice(-4)}`;
-            window.location.reload();
+            //window.location.reload();
         } else  {
           connectBtn.textContent = "Connect Wallet";
         }
