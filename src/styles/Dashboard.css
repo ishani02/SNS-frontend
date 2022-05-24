@@ -1,0 +1,41 @@
+.dashboard-container {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(116, 209, 235);
+    position: fixed;
+}
+
+.container-contents {
+    position: relative;
+    background-color: rgb(116, 209, 235);
+    height: 50%;
+    width: 90%;
+    margin-top: 7%;
+    scroll-behavior: smooth;
+}
+
+.dashboard-img {
+    background-color: rgb(116, 209, 235);
+    margin-left: 10%;   
+}
+
+.dashboard-content {
+   background-color: rgb(116, 209, 235);
+   width: 50%;
+   margin-top: 5%; 
+   margin-left: 30%;
+}
+
+.input-area{
+    background-color: rgb(116, 209, 235);  
+}
+
+.input-area button, .input-area button:hover {
+    background-color: rgb(4, 155, 24);
+    color: white;
+    outline: none;
+    border: none;
+}
+
+
+
