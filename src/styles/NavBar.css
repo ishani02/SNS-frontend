@@ -82,3 +82,32 @@ ul li {
 		display: none;
 	}
 }
+
+
+.logo{
+	width: 13%;
+	height: 100%;
+	margin-right: 10px;
+	background-color: black;
+  }
+  
+  .right{
+	display: flex;
+	justify-content: space-evenly;
+	/* background: rgb(6, 187, 242); */
+	background-color: black;
+	border-radius: 16px;
+	padding: 12px 20px;
+	height: 70%;
+	width: 25%;
+	margin-left: 75%;
+	margin-top: 0.5%;
+  }
+  .right p {
+	/* background-color: rgb(6, 187, 242);  */
+	color: white;
+	background-color: black;
+	font-size: larger;
+	/* margin-top:1%; */
+	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  }

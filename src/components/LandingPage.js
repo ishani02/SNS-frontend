@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react"
 import "../styles/LandingPage.css";
+import "../styles/NavBar.css";
 // import {Typewriter} from 'react-simple-typewriter';
 import { ethers } from "ethers";
 import contractABI from "../utils/contractABI.json";
 import Typewriter from 'typewriter-effect';
+import { networks } from '../utils/networks';
 import { Element } from "react-scroll";
 import Dashboard from "./Dashboard";
 const Web3 = require("web3");
@@ -12,6 +14,7 @@ const tld = ".shine";
 function LandingPage() {
     const {ethereum} = window;
     const [currentAccount, setCurrentAccount] = useState('');
+    const [network, setNetwork] = useState('');
     const connectBtn = document.querySelector(".connect-btn");
     
     const connectWallet = async() => {  //connect wallet => like login to get read-only access to user's wallet
@@ -27,8 +30,7 @@ function LandingPage() {
             setCurrentAccount(accounts[0]);
             console.log("Account connected", accounts[0]);
             connectBtn.textContent = "Connected";
-        }
-            
+        }   
         } catch (error) {
           console.log(error); 
         } 
@@ -72,6 +74,17 @@ function LandingPage() {
     try {
       const {ethereum} = window;
       if(ethereum) {
+        const chainId = await ethereum.request({ method: 'eth_chainId' });
+        setNetwork(networks[chainId]);
+        if(network !== 'Polygon Mumbai Testnet') {
+          alert("Switch To polygon");
+          return;
+        }
+        ethereum.on('chainChanged', handleChainChanged);
+        
+        function handleChainChanged(_chainId) {
+          window.location.reload();
+        }
         const provider = new ethers.providers.Web3Provider(ethereum);
         const signer = provider.getSigner();
         const contract = new ethers.Contract("0x42B658aAd387B8471e0511964a8b60eBb4d24b46",contractABI.abi, signer);
@@ -105,9 +118,9 @@ function LandingPage() {
         return(
         <div className="dashboard-container">
       <div className="container-contents">
-        <div className="dashboard-img">
+        {/* <div className="dashboard-img">
           <img src="https://media4.giphy.com/media/R4UdL9xqUaOMZsRosx/giphy.gif?cid=ecf05e475mwvapr6qs9uz25po3vbtk4r89dd58x3szjzypop&rid=giphy.gif&ct=g"></img>
-        </div>
+        </div> */}
         <div className="dashboard-content">
           <div class="input-group mb-3 input-area">
             <input
@@ -232,10 +245,25 @@ function LandingPage() {
         )
     }
 
+    const render = () => {
+      if(currentAccount) {
+        return(
+          dashboard()
+        )
+      } else {
+        return(
+          landing()
+        )
+      }
+    }
+
    return (
+    // <div>
+    //     {!currentAccount && landing()}
+    //     {currentAccount && dashboard()}
+    // </div>
     <div>
-        {!currentAccount && landing()}
-        {currentAccount && dashboard()}
+    {render()}
     </div>
   )
 }
