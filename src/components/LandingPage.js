@@ -14,7 +14,12 @@ const tld = ".shine";
 function LandingPage() {
     const {ethereum} = window;
     const [currentAccount, setCurrentAccount] = useState('');
+    const [domain, setDomain] = useState('');
+    const [record, setRecord] = useState('');
     const [network, setNetwork] = useState('');
+    const [editing, setEditing] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const[mints, setMints] = useState([]);
     const connectBtn = document.querySelector(".connect-btn");
     
     const connectWallet = async() => {  //connect wallet => like login to get read-only access to user's wallet
@@ -62,8 +67,6 @@ function LandingPage() {
      checkIfWalletIsConnected();
     },[]);
 
-  const [domain, setDomain] = useState('');
-  const [record, setRecord] = useState('');
 
   const mintDomain = async() => {
     if(!domain) return;
@@ -102,6 +105,11 @@ function LandingPage() {
        txn = await contract.attachDataToDomain(domain, Array(record));
        await txn.wait();
          console.log("Record set successfully at https://mumbai.polygonscan.com/tx/"+txn.hash);
+         
+          // Call fetchMints after 2 seconds
+        setTimeout(() => {
+          fetchMints();
+        }, 2000);
          setDomain('');
          setRecord('');
  
@@ -113,6 +121,68 @@ function LandingPage() {
       console.log(error); 
     }
   }
+   
+  const updateDomain = async () => {
+    if (!record || !domain) { return }
+    setLoading(true);
+    console.log("Updating domain", domain, "with record", record);
+      try {
+      const { ethereum } = window;
+      if (ethereum) {
+        const provider = new ethers.providers.Web3Provider(ethereum);
+        const signer = provider.getSigner();
+        const contract = new ethers.Contract("0x42B658aAd387B8471e0511964a8b60eBb4d24b46", contractABI.abi, signer);
+  
+        let tx = await contract.setRecord(domain, record);
+        await tx.wait();
+        console.log("Record set https://mumbai.polygonscan.com/tx/"+tx.hash);
+  
+        fetchMints();
+        setRecord('');
+        setDomain('');
+      }
+      } catch(error) {
+        console.log(error);
+      }
+    setLoading(false);
+  }
+
+  const fetchMints = async() => {
+     try {
+       if(ethereum) {
+        const provider = new ethers.providers.Web3Provider(ethereum);
+        const signer = provider.getSigner();
+        const contract = new ethers.Contract("0x42B658aAd387B8471e0511964a8b60eBb4d24b46", contractABI.abi, signer);
+
+        const names = await contract.getAllNames();
+
+        const mintRecords = await Promise.all(names.map(async (name) => {
+          const mintRecord = await contract.records(name);
+          const owner = await contract.domains(name);
+          return {
+            id: names.indexOf(name),
+            name: name,
+            record: mintRecord,
+            owner: owner,
+          };
+        }));
+        console.log("MINTS FETCHED ", mintRecords);
+        setMints(mintRecords);
+
+       }
+     } catch (error) {
+      console.log(error);
+       
+     }
+  }
+
+  // This will run any time currentAccount or network are changed
+  useEffect(() => {
+    if (network === 'Polygon Mumbai Testnet') {
+      fetchMints();
+    }
+  },[currentAccount, network]);
+  
 
     const dashboard = () => {
         return(
@@ -150,9 +220,18 @@ function LandingPage() {
               onChange={e => setRecord(e.target.value)}
             />
           </div>
-          <button type="button" class="btn btn-primary btn-lg" onClick={mintDomain}>
-            MINT
-          </button>
+          {
+             editing ? (
+               <div className="button-container">
+                    <button type="button" class="btn btn-lg btn-primary" disabled = {loading} onClick={updateDomain}>Set Record</button>
+                    <button type="button" class="btn btn-secondary btn-lg" onClick={() =>{setEditing(false)}}>cancel</button>
+                 </div>
+             ):(
+            <button type="button" class="btn btn-primary btn-lg" disabled = {loading} onClick={mintDomain}>
+              MINT
+            </button>
+             )
+           }
         </div>
       </div>
     </div>
