@@ -9,7 +9,6 @@ import {HashLink as Link} from "react-router-hash-link";
 import polygonLogo from "./assets/polygonlogo.png";
 import ethLogo from "./assets/ethlogo.png";
 import Scroll from 'react-scroll';
-const ScrollLink = Scroll.ScrollLink;
 
 function NavBar() {
   const {ethereum} = window;
@@ -37,7 +36,6 @@ function NavBar() {
           }
             setCurrentAccount(accounts[0]);
             console.log("Account connected", accounts[0]);
-            //connectBtn.textContent = `${accounts[0].slice(0,6)+"...."+accounts[0].slice(-4)}`;
         } else  {
           connectBtn.textContent = "Connect Wallet";
         }

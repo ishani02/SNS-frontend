@@ -8,9 +8,9 @@
 .container-contents {
     position: relative;
     background-color: rgb(116, 209, 235);
-    height: 30%;
+    height: 20%;
     width: 90%;
-    margin-top: 5%;
+    margin-top: -5%;
     scroll-behavior: smooth;
 }
 

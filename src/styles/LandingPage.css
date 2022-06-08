@@ -1,6 +1,6 @@
-* {
+/* * {
     background-color: aliceblue;
-}
+} */
 
 section#c1 {
     /* background-image: url("https://media3.giphy.com/media/4ZoJbPN5lh5lrgQGrY/giphy.gif?cid=ecf05e47o38x4ah4026syeuisq10r0tgrb4kpunauzyndm10&rid=giphy.gif&ct=g");
@@ -96,5 +96,148 @@ section#c1 {
     font-size: 23px; 
     color: #0082e5;
 }
+
+.mint-container {
+  margin-top: 30%;
+  background-color: rgb(116, 209, 235);
+}
+.subtitle {
+  font-size: 30px;
+  background-color: rgb(116, 209, 235);
+  color: white;
+}
+/* .underlined {
+  background-color: rgb(116, 209, 235);
+  font-size: 20px;
+  color: white;
+} */
+
+.mint-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: -10px;
+    /* margin-bottom: 20px; */
+    background-color: rgb(116, 209, 235);
+  }
+  
+  .mint-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px 9px;
+    border-radius: 5px;
+    margin: 10px 15px;
+    font-size: 17px;
+    background-color: #c4b7fa;
+    color: black;
+    min-width: 150px;
+    min-height: 15px;
+    max-width: fit-content;
+    max-height: fit-content;
+    box-shadow: 0px 0px 10px 3px rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Different background-colour for every nth mint-item */
+  /* .mint-item:nth-child(2n), .mint-row:nth-child(2n), .record:nth-child(2n) {
+    background-color: lightblue;
+  } */
+  
+  .mint-item:nth-child(3n), .mint-row:nth-child(3n), .record:nth-child(3n) {
+    background-color: lightpink;
+  }
+  
+  .mint-item:nth-child(5n), .mint-row:nth-child(5n), .record:nth-child(5n) {
+    background-color: lightgreen;
+  }
+
+  .edit-button{
+    border-radius: 50%;
+    cursor: pointer;
+    margin-left: 5px;
+    top: 20px;
+    border: 0px;
+    font-size: 12px;
+    /* background-color: black; */
+  }
+  
+  .edit-icon{
+    width: 12px;
+    height: 10px;
+  }
+
+  .link{
+    color: black;
+    text-decoration: none;
+  }
+  
+  .underlined{
+    text-decoration: underline;
+  }
+  
+  .underlined:hover{
+    cursor: pointer;
+  }
+
+  .mint-button {
+    background: -webkit-linear-gradient(left, #a200d6, #ff6fdf);
+    font-size: 18px;
+    background-size: 200% 200%;
+    animation: gradient-animation 4s ease infinite;
+    margin: 20px 10px;
+    border-radius: 20px;
+    padding: 0px 2rem;
+  }
+  
+  .mint-button:disabled{
+    background: #550072;
+    color: rgb(209, 209, 209);
+    cursor: not-allowed;
+  }
+  
+  .mint-row{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-around; */
+  }
+  
+  /* KeyFrames */
+@-webkit-keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@-moz-keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 
   

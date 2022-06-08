@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import "../styles/LandingPage.css";
 import "../styles/NavBar.css";
-// import {Typewriter} from 'react-simple-typewriter';
+import "../styles/Dashboard.css";
 import { ethers } from "ethers";
 import contractABI from "../utils/contractABI.json";
 import Typewriter from 'typewriter-effect';
@@ -10,6 +10,7 @@ import { Element } from "react-scroll";
 import Dashboard from "./Dashboard";
 const Web3 = require("web3");
 const tld = ".shine";
+const CONTRACT_ADDRESS = "0x2db04e565C99E944a4BF534d2bD44B87aA898A37";
 
 function LandingPage() {
     const {ethereum} = window;
@@ -59,9 +60,7 @@ function LandingPage() {
        } else {
          console.log("No authorized account found");
        }
-
     };
-
 
     useEffect(() => { // rendered as soon as page loads
      checkIfWalletIsConnected();
@@ -79,18 +78,18 @@ function LandingPage() {
       if(ethereum) {
         const chainId = await ethereum.request({ method: 'eth_chainId' });
         setNetwork(networks[chainId]);
-        if(network !== 'Polygon Mumbai Testnet') {
-          alert("Switch To polygon");
-          return;
-        }
         ethereum.on('chainChanged', handleChainChanged);
         
         function handleChainChanged(_chainId) {
           window.location.reload();
         }
+        if(network !== 'Polygon Mumbai Testnet') {
+            alert("Switch To polygon");
+            return;
+          }
         const provider = new ethers.providers.Web3Provider(ethereum);
         const signer = provider.getSigner();
-        const contract = new ethers.Contract("0x42B658aAd387B8471e0511964a8b60eBb4d24b46",contractABI.abi, signer);
+        const contract = new ethers.Contract(CONTRACT_ADDRESS,contractABI.abi, signer);
         let price = domain.length == 3 ? '0.5' : domain.length == 4 ? '0.3' : '0.1';
         console.log("Minting your domain",domain, "at price: ", price);
 
@@ -102,11 +101,11 @@ function LandingPage() {
          console.log("https://mumbai.polygonscan.com/tx/"+txn.hash);
          console.log(txn.hash);
        }
-       txn = await contract.attachDataToDomain(domain, Array(record));
+       txn = await contract.attachDataToDomain(domain, record);
        await txn.wait();
          console.log("Record set successfully at https://mumbai.polygonscan.com/tx/"+txn.hash);
-         
-          // Call fetchMints after 2 seconds
+
+        // Call fetchMints after 2 seconds
         setTimeout(() => {
           fetchMints();
         }, 2000);
@@ -131,7 +130,7 @@ function LandingPage() {
       if (ethereum) {
         const provider = new ethers.providers.Web3Provider(ethereum);
         const signer = provider.getSigner();
-        const contract = new ethers.Contract("0x42B658aAd387B8471e0511964a8b60eBb4d24b46", contractABI.abi, signer);
+        const contract = new ethers.Contract(CONTRACT_ADDRESS, contractABI.abi, signer);
   
         let tx = await contract.setRecord(domain, record);
         await tx.wait();
@@ -152,13 +151,19 @@ function LandingPage() {
        if(ethereum) {
         const provider = new ethers.providers.Web3Provider(ethereum);
         const signer = provider.getSigner();
-        const contract = new ethers.Contract("0x42B658aAd387B8471e0511964a8b60eBb4d24b46", contractABI.abi, signer);
+        const contract = new ethers.Contract(CONTRACT_ADDRESS, contractABI.abi, signer);
 
         const names = await contract.getAllNames();
 
-        const mintRecords = await Promise.all(names.map(async (name) => {
-          const mintRecord = await contract.records(name);
-          const owner = await contract.domains(name);
+        const mintRecords = await Promise.all(names.map(async(name) => {
+          //console.log(name)
+          let name1 = name.split(".")[0];
+          console.log(name)
+          //const mintRecord = await contract.getData(name);
+          const mintRecord = await contract.records(name1);
+          console.log(mintRecord);
+          const owner = await contract.domains(name1);
+          //console.log(owner);
           return {
             id: names.indexOf(name),
             name: name,
@@ -178,12 +183,52 @@ function LandingPage() {
 
   // This will run any time currentAccount or network are changed
   useEffect(() => {
-    if (network === 'Polygon Mumbai Testnet') {
+    if (network == 'Polygon Mumbai Testnet') {
       fetchMints();
     }
   },[currentAccount, network]);
   
+    // Add this render function next to your other render functions
+const renderMints = () => {
+  fetchMints();
+  if (currentAccount && mints.length > 0) {
+    return (
+      <div className="dashboard-container">
+      <div className="mint-container">
+        <p className="subtitle">Recently minted domains!</p>
+        <div className="mint-list">
+          { mints.map((mint, index) => {
+            return (
+              <div className="mint-item" key={index}>
+                <div className='mint-row'>
+                  <a className="link" href={`https://testnets.opensea.io/assets/mumbai/${CONTRACT_ADDRESS}/${mint.id}`} target="_blank" rel="noopener noreferrer">
+                    <p className="underlined">{' '}{mint.name}{' '}</p>
+                  </a>
+                  {/* If mint.owner is currentAccount, add an "edit" button*/}
+                  { mint.owner.toLowerCase() == currentAccount.toLowerCase() ?
+                    // <button className="edit-button" onClick={() => editRecord(mint.name)}><i class="fa-solid fa-pencil"></i></button>
+                    <img className="edit-icon" src="https://img.icons8.com/metro/26/000000/pencil.png" alt="Edit button" onClick={editRecord}/>
+                    :
+                    null
+                  }
+                </div>
+          <p className="record"> {mint.record} </p>
+          
+        </div>)
+        })}
+      </div>
+    </div>
+    </div>
+    );
+  }
+};
 
+// This will take us into edit mode and show us the edit buttons!
+const editRecord = (name) => {
+  console.log("Editing record for", name);
+  setEditing(true);
+  setDomain(name);
+}
     const dashboard = () => {
         return(
         <div className="dashboard-container">
@@ -227,7 +272,7 @@ function LandingPage() {
                     <button type="button" class="btn btn-secondary btn-lg" onClick={() =>{setEditing(false)}}>cancel</button>
                  </div>
              ):(
-            <button type="button" class="btn btn-primary btn-lg" disabled = {loading} onClick={mintDomain}>
+            <button type="button" class="btn btn-primary btn-lg" onClick={mintDomain}>
               MINT
             </button>
              )
@@ -337,13 +382,15 @@ function LandingPage() {
     }
 
    return (
-    // <div>
-    //     {!currentAccount && landing()}
-    //     {currentAccount && dashboard()}
-    // </div>
     <div>
-    {render()}
+        {!currentAccount && landing()}
+        {currentAccount && dashboard()}
+        {mints && renderMints()}
     </div>
+    // <div>
+    // {render()}
+    // {mints && renderMints()}
+    // </div>
   )
 }
 
