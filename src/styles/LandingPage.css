@@ -119,7 +119,7 @@ section#c1 {
     justify-content: center;
     align-items: center;
     margin-top: -10px;
-    /* margin-bottom: 20px; */
+    /* margin-bottom: 20%; */
     background-color: rgb(116, 209, 235);
   }
   
@@ -131,6 +131,7 @@ section#c1 {
     padding: 9px 9px;
     border-radius: 5px;
     margin: 10px 15px;
+    /* margin-bottom: 10%; */
     font-size: 17px;
     background-color: #c4b7fa;
     color: black;
@@ -146,6 +147,18 @@ section#c1 {
     background-color: lightblue;
   } */
   
+  .edit-button {
+    border-radius: 50%;
+    cursor: pointer;
+    margin-left: 6%;
+    margin-top: 3%;
+    border: 0px;
+    font-size: 12px;
+    width: 22px;
+    height: 22px;
+    align-items: center;
+    background-color: transparent;
+  }
   .mint-item:nth-child(3n), .mint-row:nth-child(3n), .record:nth-child(3n) {
     background-color: lightpink;
   }
@@ -154,19 +167,10 @@ section#c1 {
     background-color: lightgreen;
   }
 
-  .edit-button{
-    border-radius: 50%;
-    cursor: pointer;
-    margin-left: 5px;
-    top: 20px;
-    border: 0px;
-    font-size: 12px;
-    /* background-color: black; */
-  }
   
   .edit-icon{
     width: 12px;
-    height: 10px;
+    height: 12px;
   }
 
   .link{
