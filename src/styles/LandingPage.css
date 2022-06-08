@@ -119,7 +119,6 @@ section#c1 {
     justify-content: center;
     align-items: center;
     margin-top: -10px;
-    /* margin-bottom: 20%; */
     background-color: rgb(116, 209, 235);
   }
   
@@ -131,7 +130,6 @@ section#c1 {
     padding: 9px 9px;
     border-radius: 5px;
     margin: 10px 15px;
-    /* margin-bottom: 10%; */
     font-size: 17px;
     background-color: #c4b7fa;
     color: black;
@@ -143,10 +141,14 @@ section#c1 {
   }
   
   /* Different background-colour for every nth mint-item */
-  /* .mint-item:nth-child(2n), .mint-row:nth-child(2n), .record:nth-child(2n) {
-    background-color: lightblue;
-  } */
+  .mint-item:nth-child(3n), .mint-row:nth-child(3n), .record:nth-child(3n) {
+    background-color: lightpink;
+  }
   
+  .mint-item:nth-child(5n), .mint-row:nth-child(5n), .record:nth-child(5n) {
+    background-color: lightgreen;
+  }
+
   .edit-button {
     border-radius: 50%;
     cursor: pointer;
@@ -159,14 +161,6 @@ section#c1 {
     align-items: center;
     background-color: transparent;
   }
-  .mint-item:nth-child(3n), .mint-row:nth-child(3n), .record:nth-child(3n) {
-    background-color: lightpink;
-  }
-  
-  .mint-item:nth-child(5n), .mint-row:nth-child(5n), .record:nth-child(5n) {
-    background-color: lightgreen;
-  }
-
   
   .edit-icon{
     width: 12px;
@@ -205,7 +199,7 @@ section#c1 {
   .mint-row{
     display: flex;
     flex-direction: row;
-    /* justify-content: space-around; */
+    /* justify-content: space-evenly; */
   }
   
   /* KeyFrames */
