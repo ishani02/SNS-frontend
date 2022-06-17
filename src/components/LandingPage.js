@@ -8,6 +8,7 @@ import Typewriter from 'typewriter-effect';
 import { networks } from '../utils/networks';
 import { Element } from "react-scroll";
 import Dashboard from "./Dashboard";
+import { networkInterfaces } from "os-browserify";
 const Web3 = require("web3");
 const tld = ".shine";
 const CONTRACT_ADDRESS = "0x2db04e565C99E944a4BF534d2bD44B87aA898A37";
@@ -45,7 +46,7 @@ function LandingPage() {
     const checkIfWalletIsConnected = async() => { // checks if metamask installed
        if(!ethereum){
         console.log("Metamask is not installed");
-       } else {
+      } else {
         console.log("Ethereum object found", ethereum);  
        }
        
@@ -80,13 +81,13 @@ function LandingPage() {
         setNetwork(networks[chainId]);
         ethereum.on('chainChanged', handleChainChanged);
         
+        // if(network !== "Polygon Mumbai Testnet") {
+        //   alert("Switch To polygon");
+        //   return;
+        // }
         function handleChainChanged(_chainId) {
           window.location.reload();
         }
-        if(network !== 'Polygon Mumbai Testnet') {
-            alert("Switch To polygon");
-            return;
-          }
         const provider = new ethers.providers.Web3Provider(ethereum);
         const signer = provider.getSigner();
         const contract = new ethers.Contract(CONTRACT_ADDRESS,contractABI.abi, signer);
@@ -190,10 +191,8 @@ function LandingPage() {
   
     // Add this render function next to your other render functions
 const renderMints = () => {
-  fetchMints();
   if (currentAccount && mints.length > 0) {
     return (
-      <div className="dashboard-container">
       <div className="mint-container">
         <p className="subtitle">Recently minted domains!</p>
         <div className="mint-list">
@@ -206,18 +205,16 @@ const renderMints = () => {
                   </a>
                   {/* If mint.owner is currentAccount, add an "edit" button*/}
                   { mint.owner.toLowerCase() == currentAccount.toLowerCase() ?
-                    // <button className="edit-button" onClick={() => editRecord(mint.name)}><i class="fa-solid fa-pencil"></i></button>
-                    <img className="edit-icon" src="https://img.icons8.com/metro/26/000000/pencil.png" alt="Edit button" onClick={editRecord}/>
+                    <button className="edit-button" onClick={() => editRecord(mint.name)}><img className="edit-icon" src="https://img.icons8.com/metro/26/000000/pencil.png" alt="Edit button"/></button>
                     :
                     null
                   }
                 </div>
           <p className="record"> {mint.record} </p>
-          
-        </div>)
+        </div>
+        )
         })}
       </div>
-    </div>
     </div>
     );
   }
@@ -238,7 +235,7 @@ const editRecord = (name) => {
         </div> */}
         <div className="dashboard-content">
           <div class="input-group mb-3 input-area">
-            <input
+          <input
               type="text"
               class="form-control"
               placeholder="Enter Domain Name"
@@ -272,12 +269,13 @@ const editRecord = (name) => {
                     <button type="button" class="btn btn-secondary btn-lg" onClick={() =>{setEditing(false)}}>cancel</button>
                  </div>
              ):(
-            <button type="button" class="btn btn-primary btn-lg" onClick={mintDomain}>
+            <button type="button" class="btn btn-primary btn-lg" onClick = {mintDomain}>
               MINT
             </button>
              )
            }
         </div>
+        <div className="recently-minted"> {mints && renderMints()}</div>
       </div>
     </div>
     );
@@ -369,28 +367,11 @@ const editRecord = (name) => {
         )
     }
 
-    const render = () => {
-      if(currentAccount) {
-        return(
-          dashboard()
-        )
-      } else {
-        return(
-          landing()
-        )
-      }
-    }
-
    return (
     <div>
         {!currentAccount && landing()}
         {currentAccount && dashboard()}
-        {mints && renderMints()}
     </div>
-    // <div>
-    // {render()}
-    // {mints && renderMints()}
-    // </div>
   )
 }
 

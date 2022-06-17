@@ -13,7 +13,6 @@ function App() {
       <React.Fragment>
        <NavBar/>
        <LandingPage/>
-       {/* <Dashboard/> */}
       </React.Fragment>
     </div>
   );

@@ -98,13 +98,14 @@ section#c1 {
 }
 
 .mint-container {
-  margin-top: 30%;
+  margin-top: 25%;
   background-color: rgb(116, 209, 235);
 }
 .subtitle {
   font-size: 30px;
   background-color: rgb(116, 209, 235);
   color: white;
+  margin-left: 10%;
 }
 /* .underlined {
   background-color: rgb(116, 209, 235);
@@ -118,7 +119,8 @@ section#c1 {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    margin-top: -10px;
+    margin-top: -8px;
+    margin-left: 10%;
     background-color: rgb(116, 209, 235);
   }
   
@@ -127,14 +129,14 @@ section#c1 {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: 9px 9px;
+    padding: 2px 2px;
     border-radius: 5px;
-    margin: 10px 15px;
-    font-size: 17px;
+    margin: 8px 8px;
+    font-size: 15px;
     background-color: #c4b7fa;
     color: black;
-    min-width: 150px;
-    min-height: 15px;
+    min-width: 155px;
+    min-height: 13px;
     max-width: fit-content;
     max-height: fit-content;
     box-shadow: 0px 0px 10px 3px rgba(255, 255, 255, 0.2);
@@ -235,6 +237,10 @@ section#c1 {
   100% {
     background-position: 0% 50%;
   }
+}
+
+.recently-minted {
+  margin-top: -20%;
 }
 
 
