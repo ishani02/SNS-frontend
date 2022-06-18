@@ -8,6 +8,7 @@ import { networks } from '../utils/networks';
 import {HashLink as Link} from "react-router-hash-link";
 import polygonLogo from "./assets/polygonlogo.png";
 import ethLogo from "./assets/ethlogo.png";
+import logo from "./assets/sns9.png";
 import Scroll from 'react-scroll';
 
 function NavBar() {
@@ -54,6 +55,9 @@ function NavBar() {
         <div className='navbar-container'> 
         <div className='links'>
         <nav>
+        <div className='site-logo-div'>
+          <img className='site-logo' src={logo}/>
+          </div>
               <div className="right wallet">
       <img alt="Network logo" className="logo" src={ network.includes("Polygon") ? polygonLogo : ethLogo} />
       { network == 'Polygon Mumbai Testnet'?<p > Wallet: {currentAccount.slice(0, 6)}...{currentAccount.slice(-4)} </p>:<p>Switch to Polygon</p> }
@@ -69,12 +73,15 @@ function NavBar() {
       <div className='navbar-container'> 
       <div className='links'>
       <nav>
+            <div className='site-logo-div'>
+          <img className='site-logo' src={logo}/>
+          </div>
           <ul>   
              <FontAwesomeIcon icon="fa-solid fa-bars"/> 
             <BrowserRouter>
-              <li className="s"><Link smooth to= "#c1" id='link'><i class="fas fa-home"></i>Home</Link></li>
-              <li className="s"><Link smooth to= "#c2" id='link'><i class="fas fa-info-circle"></i>About Us</Link></li>
-              <li className="s"><Link smooth to= "#c3" id='link'><i class="fas fa-file-alt"></i>Steps</Link></li>
+              <li className="s"><Link smooth to= "#c1" id='link'><i class="fas fa-home"></i> Home</Link></li>
+              <li className="s"><Link smooth to= "#c2" id='link'><i class="fas fa-info-circle"></i> About Us</Link></li>
+              <li className="s"><Link smooth to= "#c3" id='link'><i class="fas fa-file-alt"></i> Steps</Link></li>
             </BrowserRouter>
           </ul>
       </nav>  

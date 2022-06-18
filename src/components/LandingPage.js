@@ -109,7 +109,7 @@ function LandingPage() {
         // Call fetchMints after 2 seconds
         setTimeout(() => {
           fetchMints();
-        }, 2000);
+        }, 1000);
          setDomain('');
          setRecord('');
  
@@ -124,20 +124,23 @@ function LandingPage() {
    
   const updateDomain = async () => {
     if (!record || !domain) { return }
+
+    const recordField = document.querySelector(".record-input");
     setLoading(true);
     console.log("Updating domain", domain, "with record", record);
       try {
-      const { ethereum } = window;
+        const {ethereum} = window;
       if (ethereum) {
         const provider = new ethers.providers.Web3Provider(ethereum);
         const signer = provider.getSigner();
         const contract = new ethers.Contract(CONTRACT_ADDRESS, contractABI.abi, signer);
   
-        let tx = await contract.setRecord(domain, record);
+        let tx = await contract.attachDataToDomain(domain.split(".")[0], record);
         await tx.wait();
         console.log("Record set https://mumbai.polygonscan.com/tx/"+tx.hash);
   
         fetchMints();
+        renderMints();
         setRecord('');
         setDomain('');
       }
@@ -145,6 +148,8 @@ function LandingPage() {
         console.log(error);
       }
     setLoading(false);
+    setEditing(false);
+    recordField.value = "";
   }
 
   const fetchMints = async() => {
@@ -186,6 +191,7 @@ function LandingPage() {
   useEffect(() => {
     if (network == 'Polygon Mumbai Testnet') {
       fetchMints();
+      renderMints();
     }
   },[currentAccount, network]);
   
@@ -205,7 +211,9 @@ const renderMints = () => {
                   </a>
                   {/* If mint.owner is currentAccount, add an "edit" button*/}
                   { mint.owner.toLowerCase() == currentAccount.toLowerCase() ?
-                    <button className="edit-button" onClick={() => editRecord(mint.name)}><img className="edit-icon" src="https://img.icons8.com/metro/26/000000/pencil.png" alt="Edit button"/></button>
+                    <button className="edit-button" onClick={() => editRecord(mint.name)}>
+                      <img className="edit-icon" src="https://img.icons8.com/metro/26/000000/pencil.png" alt="Edit button"/>
+                      </button>
                     :
                     null
                   }
@@ -234,8 +242,9 @@ const editRecord = (name) => {
           <img src="https://media4.giphy.com/media/R4UdL9xqUaOMZsRosx/giphy.gif?cid=ecf05e475mwvapr6qs9uz25po3vbtk4r89dd58x3szjzypop&rid=giphy.gif&ct=g"></img>
         </div> */}
         <div className="dashboard-content">
+            {!editing ?
           <div class="input-group mb-3 input-area">
-          <input
+           <input
               type="text"
               class="form-control"
               placeholder="Enter Domain Name"
@@ -248,14 +257,17 @@ const editRecord = (name) => {
               type="button"
               id="button-addon2"
               onClick={null}
-            >
+              >
               {tld}
             </button>
           </div>
+            : 
+            null
+           }
           <div class="input-group mb-3 input-area">
             <input
               type="text"
-              class="form-control"
+              class="form-control record-input"
               placeholder="Qualities that make you shine"
               aria-label="Recipient's username"
               aria-describedby="button-addon2"
@@ -265,8 +277,8 @@ const editRecord = (name) => {
           {
              editing ? (
                <div className="button-container">
-                    <button type="button" class="btn btn-lg btn-primary" disabled = {loading} onClick={updateDomain}>Set Record</button>
-                    <button type="button" class="btn btn-secondary btn-lg" onClick={() =>{setEditing(false)}}>cancel</button>
+                    <button type="button" class="btn btn-lg btn-primary"  disabled={loading} onClick={updateDomain}>Set Record</button>
+                    <button type="button" class="btn btn-secondary btn-lg" onClick={() =>{setEditing(false)}}>Cancel</button>
                  </div>
              ):(
             <button type="button" class="btn btn-primary btn-lg" onClick = {mintDomain}>

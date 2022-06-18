@@ -46,7 +46,8 @@ ul li #link {
 	list-style:none;
 	width: 30%;
 	margin-left: 2%;
-	color: rgb(6, 91, 171);
+	color: rgb(5, 86, 126);
+	/* rgb(5, 86, 126); */
 	background-color: rgb(62, 199, 237);
 	font-size: large;	
 	font-family:sans-serif;
@@ -85,11 +86,28 @@ ul li {
 
 
 .logo{
-	width: 13%;
+	width: 10%;
 	height: 100%;
 	margin-right: 10px;
 	background-color: black;
   }
+
+.site-logo-div {
+	width: 14%;
+	height: 85%;
+	margin-left: 0.5%;
+	box-shadow: rgba(16, 15, 15, 0.11);
+	align-items: center;
+	margin-top: 0.5%;
+	border: 4px solid rgb(3, 86, 124);
+}
+
+.site-logo {
+	width: 100%;
+	height: 100%;
+	background-color: black;
+
+}
   
   .right{
 	display: flex;
@@ -100,7 +118,7 @@ ul li {
 	padding: 12px 20px;
 	height: 70%;
 	width: 25%;
-	margin-left: 75%;
+	margin-left: 65%;
 	margin-top: 0.5%;
   }
   .right p {
