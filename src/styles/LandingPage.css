@@ -81,9 +81,83 @@ section#c1 {
     box-shadow: 6px 10px #23a6d5;
 }
 
-/* .step-1:hover {
-    width: 24%;
-    z-index: 20px;
+@media (min-width: 1303px) {
+  .step-1 {
+      width: 25%;
+      height: 22%;
+      font-size: 10px;
+  }
+  .step-1-heading h2 {
+    font-size: 4px;
+  }
+  .step-1-content p {
+    font-size: 5px;
+  }
+  .body {
+    overflow-x: hidden;
+  }
+  .home-heading-text {
+    font-size: 34px;
+  }
+
+}
+
+@media (min-width: 1748px) {
+  .step-1 {
+    width: 14%;
+    height: 25%;
+    font-size: 10px;
+}
+.home-heading-text {
+  font-size: 70px;
+}
+}
+
+@media (min-width: 1224px) {
+  .step-1 {
+    width: 20%;
+    height: 25%;
+    font-size: 10px;
+ }
+}
+
+@media (min-width: 912px) {
+  .step-1 {
+    width: 25%;
+    height: 20%;
+    font-size: 10px;
+ }
+}
+
+@media (min-width: 852px) {
+  .step-1 {
+    width: 27%;
+    height: 20%;
+    font-size: 10px;
+ }
+
+}
+
+
+/* @media (min-width: 412px) {
+  .step-1 {
+      width: 35%;
+      height: 22%;
+      font-size: 10px;
+  }
+  .step-1-heading h2 {
+    font-size: 4px;
+  }
+  .step-1-content p {
+    font-size: 5px;
+  }
+  .body {
+    overflow-x: hidden;
+  }
+  .home-heading-text {
+    font-size: 34px;
+  }
+
 } */
 
 .step-1-heading h2{
