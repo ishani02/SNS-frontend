@@ -1,0 +1,260 @@
+repo_name: ishani02/SNS-frontend
+report_id: '0805b74fd11835e8309e48be80c75e62'
+version: 0.1
+repo_type: Public
+timestamp: '2024-02-02T08:51:42+00:00'
+requested_by: ishani02
+provider: github
+branch: main
+detected_tools_count: 19
+tools:
+- name: CSS 3
+  description: The latest evolution of the Cascading Style Sheets language
+  website_url: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS3
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/6727/css.png
+  detection_source_url: https://github.com/ishani02/SNS-frontend
+  detection_source: Repo Metadata
+- name: JavaScript
+  description: Lightweight, interpreted, object-oriented language with first-class
+    functions
+  website_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/1209/javascript.jpeg
+  detection_source_url: https://github.com/ishani02/SNS-frontend
+  detection_source: Repo Metadata
+- name: Bootstrap
+  description: Simple and flexible HTML, CSS, and JS for popular UI components and
+    interactions
+  website_url: http://getbootstrap.com/
+  version: 5.1.3
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Front-End Frameworks
+  image_url: https://img.stackshare.io/service/1101/C9QJ7V3X.png
+  detection_source_url: https://github.com/ishani02/SNS-frontend/blob/main/package-lock.json
+  detection_source: package.json
+  last_updated_by: Ishani Kohli
+  last_updated_on: 2022-05-24 12:47:44.000000000 Z
+- name: React
+  description: A JavaScript library for building user interfaces
+  website_url: https://reactjs.org/
+  version: 18.1.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Javascript UI Libraries
+  image_url: https://img.stackshare.io/service/1020/OYIaJ1KK.png
+  detection_source_url: https://github.com/ishani02/SNS-frontend/blob/main/package-lock.json
+  detection_source: package.json
+  last_updated_by: Ishani Kohli
+  last_updated_on: 2022-05-24 12:47:44.000000000 Z
+- name: React Router
+  description: A complete routing solution for React.js
+  website_url: https://github.com/rackt/react-router
+  version: 5.2.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: JavaScript Framework Components
+  image_url: https://img.stackshare.io/service/3350/8261421.png
+  detection_source_url: https://github.com/ishani02/SNS-frontend/blob/main/package-lock.json
+  detection_source: package.json
+  last_updated_by: Ishani Kohli
+  last_updated_on: 2022-05-24 12:47:44.000000000 Z
+- name: Git
+  description: Fast, scalable, distributed revision control system
+  website_url: http://git-scm.com/
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Version Control System
+  image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/ishani02/SNS-frontend
+  detection_source: Repo Metadata
+- name: npm
+  description: The package manager for JavaScript.
+  website_url: https://www.npmjs.com/
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Front End Package Manager
+  image_url: https://img.stackshare.io/service/1120/lejvzrnlpb308aftn31u.png
+  detection_source_url: https://github.com/ishani02/SNS-frontend/blob/main/package.json
+  detection_source: package.json
+  last_updated_by: Ishani Kohli
+  last_updated_on: 2022-05-09 08:28:28.000000000 Z
+- name: web3
+  website_url: https://github.com/ethereum/web3.js/
+  open_source: false
+  hosted_saas: false
+  image_url: https://img.stackshare.io/service/8418/no-img-open-source.png
+  detection_source_url: https://github.com/ishani02/SNS-frontend/blob/main/package.json
+  detection_source: package.json
+  last_updated_by: Ishani Kohli
+  last_updated_on: 2022-05-24 12:47:44.000000000 Z
+- name: "@fortawesome/fontawesome-svg-core"
+  description: The iconic font, CSS, and SVG framework
+  package_url: https://www.npmjs.com/@fortawesome/fontawesome-svg-core
+  version: 6.1.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16644/default_50c9ed1615a25628505ab53def64d82450ced26b.png
+  detection_source_url: https://github.com/ishani02/SNS-frontend/blob/main/package-lock.json
+  detection_source: package.json
+  last_updated_by: Ishani Kohli
+  last_updated_on: 2022-05-24 12:47:44.000000000 Z
+- name: "@fortawesome/free-solid-svg-icons"
+  description: The iconic font, CSS, and SVG framework
+  package_url: https://www.npmjs.com/@fortawesome/free-solid-svg-icons
+  version: 6.1.1
+  license: CC-BY-4.0,MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16683/default_6dad4e42e12d47cc6edfbdea036dae12f91abebb.png
+  detection_source_url: https://github.com/ishani02/SNS-frontend/blob/main/package-lock.json
+  detection_source: package.json
+  last_updated_by: Ishani Kohli
+  last_updated_on: 2022-05-24 12:47:44.000000000 Z
+- name: "@fortawesome/react-fontawesome"
+  description: Official React component for Font Awesome 5
+  package_url: https://www.npmjs.com/@fortawesome/react-fontawesome
+  version: 0.1.18
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16936/default_277303773c2bdb575ee8f4bfe869f0a33d6755b2.png
+  detection_source_url: https://github.com/ishani02/SNS-frontend/blob/main/package-lock.json
+  detection_source: package.json
+  last_updated_by: Ishani Kohli
+  last_updated_on: 2022-05-24 12:47:44.000000000 Z
+- name: "@testing-library/jest-dom"
+  description: Custom jest matchers to test the state of the DOM
+  package_url: https://www.npmjs.com/@testing-library/jest-dom
+  version: 5.16.4
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/17424/default_1cdcda15ebb7caed879f8340bc212b44c4ec9dac.png
+  detection_source_url: https://github.com/ishani02/SNS-frontend/blob/main/package-lock.json
+  detection_source: package.json
+  last_updated_by: Ishani Kohli
+  last_updated_on: 2022-05-24 12:47:44.000000000 Z
+- name: "@testing-library/react"
+  description: Simple and complete React DOM testing utilities that encourage good
+    testing practices
+  package_url: https://www.npmjs.com/@testing-library/react
+  version: 13.2.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16549/default_d522554c6a41cb28d922d6d3ad32ad4afa0e3bb5.png
+  detection_source_url: https://github.com/ishani02/SNS-frontend/blob/main/package-lock.json
+  detection_source: package.json
+  last_updated_by: Ishani Kohli
+  last_updated_on: 2022-05-24 12:47:44.000000000 Z
+- name: ethers
+  description: Umbrella package for most common Ethers libraries
+  package_url: https://www.npmjs.com/ethers
+  version: 5.6.6
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/17297/default_3ec53c4dad64de27b72cc81401e898b5aea82f2c.png
+  detection_source_url: https://github.com/ishani02/SNS-frontend/blob/main/package-lock.json
+  detection_source: package.json
+  last_updated_by: Ishani Kohli
+  last_updated_on: 2022-05-24 12:47:44.000000000 Z
+- name: react-bootstrap
+  description: Bootstrap 3 components built with React
+  package_url: https://www.npmjs.com/react-bootstrap
+  version: 2.4.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16383/default_92302d1bbf4c0f67b862869662b4f69002c94aad.png
+  detection_source_url: https://github.com/ishani02/SNS-frontend/blob/main/package-lock.json
+  detection_source: package.json
+  last_updated_by: Ishani Kohli
+  last_updated_on: 2022-05-24 12:47:44.000000000 Z
+- name: react-dom
+  description: React package for working with the DOM
+  package_url: https://www.npmjs.com/react-dom
+  version: 18.1.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15808/default_14fd11531839d935f920b6d55bd6f3528c890ad7.png
+  detection_source_url: https://github.com/ishani02/SNS-frontend/blob/main/package-lock.json
+  detection_source: package.json
+  last_updated_by: Ishani Kohli
+  last_updated_on: 2022-05-24 12:47:44.000000000 Z
+- name: react-router-dom
+  description: DOM bindings for React Router
+  package_url: https://www.npmjs.com/react-router-dom
+  version: 5.2.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16025/default_e25d1fbb04a118c79fb444294461417342bd03bf.png
+  detection_source_url: https://github.com/ishani02/SNS-frontend/blob/main/package-lock.json
+  detection_source: package.json
+  last_updated_by: Ishani Kohli
+  last_updated_on: 2022-06-29 13:58:02.000000000 Z
+- name: react-scripts
+  description: Configuration and scripts for Create React App
+  package_url: https://www.npmjs.com/react-scripts
+  version: 4.0.3
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15985/default_8b5680d4e916298d08363c291a0d6e34c07ceb15.png
+  detection_source_url: https://github.com/ishani02/SNS-frontend/blob/main/package-lock.json
+  detection_source: package.json
+  last_updated_by: Ishani Kohli
+  last_updated_on: 2022-05-24 12:47:44.000000000 Z
+- name: web3
+  description: Ethereum JavaScript API
+  package_url: https://www.npmjs.com/web3
+  version: 1.7.3
+  license: LGPL-3.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16369/default_17385ab3aa01d4c295c08d4a9736140df691c5e9.png
+  detection_source_url: https://github.com/ishani02/SNS-frontend/blob/main/package-lock.json
+  detection_source: package.json
+  last_updated_by: Ishani Kohli
+  last_updated_on: 2022-05-24 12:47:44.000000000 Z
